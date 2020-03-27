@@ -1,0 +1,4 @@
+{
+  "windapsearch": "./windapsearch_py2.py",
+  "impacket": "/home/sam/hackthebox/sauna/impacket/examples"
+}
