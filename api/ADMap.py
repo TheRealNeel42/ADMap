@@ -6,7 +6,7 @@ import re
 app = Flask(__name__)
 
 #load package locations from config file
-with open('config.json') as config_file:
+with open('../config.json') as config_file:
     cfg = json.load(config_file)
 
 
