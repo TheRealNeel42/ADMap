@@ -1,5 +1,6 @@
 # ADMap_API
-The API for an Active Directory enumeration tool using Impacket and other tools. 
+ADMap is an Active Directory enumeration tool built on top of SecureAuths Impacket Library and Ropnops Windapsearch LDap Enumeration tool that aims to make basic Active Directory enumeration easy and user friendly for beginners. 
+
 
 ## Requirements
 The following must be installed prior to running this program
@@ -8,3 +9,4 @@ Windapsearch (Python 2 version): https://github.com/TheRealNeel42/windapsearch
 
 Update config.json to point to the 2 locations. An example is given.
 
+## Usage

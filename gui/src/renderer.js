@@ -35,6 +35,7 @@ const cardMaps = [];
 function createCard(title, apiUrl, populationFn)
 {
     const card = new Card(title, "");
+    console.log("Trying")
 
     cardMaps.push({
         card: card,
@@ -47,10 +48,9 @@ function createCard(title, apiUrl, populationFn)
 
 function submit()
 {
-    const args = "?user=" + document.getElementById("username").value
+    const args = "?dcip=" + document.getElementById("ipAddress").value
         + "&password=" + document.getElementById("password").value
-        + "&dcip=" + document.getElementById("ipAddress").value
-        + "&domain=" + document.getElementById("domainName").value;
+        + "&username=" + document.getElementById("username").value;
 
     // http://127.0.0.1:5000/users?username=hey&password=fdsa&dcip=10.10.10.127&full=fjeiwo
     cardMaps.filter(item => item.card.isChecked).forEach((item) =>
@@ -72,17 +72,18 @@ document.getElementById("submit").addEventListener("click", submit);
 
 createCard("Users", "http://127.0.0.1:5000/users", (jsonObject) =>
 {
-    return "received: " + JSON.stringify(jsonObject);
+    return jsonObject[0];
+    //return JSON.stringify(jsonObject);
 });
 
 createCard("UserSPNs", "http://127.0.0.1:5000/userspns", (jsonObject) =>
 {
-    return "received: " + JSON.stringify(jsonObject);
+    return jsonObject[0];
 });
 
 createCard("As-Rep Roasting", "http://127.0.0.1:5000/asrep", (jsonObject) =>
 {
-    return "received: " + JSON.stringify(jsonObject);
+    return jsonObject[0];
 });
 
 

@@ -1,9 +1,11 @@
 from subprocess import Popen, PIPE 
 from flask import Flask, request
+from flask_cors import CORS
 import json
 import re
 
 app = Flask(__name__)
+CORS(app)
 
 #load package locations from config file
 with open('../config.json') as config_file:
