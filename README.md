@@ -7,6 +7,12 @@ The following must be installed prior to running this program
 Impacket: https://github.com/SecureAuthCorp/impacket 
 Windapsearch (Python 2 version): https://github.com/TheRealNeel42/windapsearch
 
+Yarn
+Flask
+Flask_cors
+Python LDAP Module
+
 Update config.json to point to the 2 locations. An example is given.
 
 ## Usage
+In the main directory run run.sh to start ADMap!
