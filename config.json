@@ -1,4 +1,5 @@
 {
   "windapsearch": "./windapsearch_py2.py",
-  "impacket": "/home/sam/hackthebox/sauna/impacket/examples"
+  "impacket": "/home/sam/hackthebox/sauna/impacket/examples",
+  "port": "5000"
 }

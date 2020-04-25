@@ -12,6 +12,7 @@ with open('../config.json') as config_file:
 
 WINDAPSEARCH = cfg['windapsearch']
 IMPACKET = cfg['impacket']
+PORT = cfg['port']
 GETNPUSERS = IMPACKET+'/GetNPUsers.py'
 
 #check IP return a boolean if an IP address is valid
@@ -118,7 +119,7 @@ def userspns():
 	spns_json = json.dumps(_output)
 	return spns_json
 
-@app.route("/asrep")
+@app.route('/asrep')
 def asrep():
 	dcip = request.args.get('dcip')
 	domain = request.args.get('domain')
@@ -152,6 +153,6 @@ def asrep():
 	return asrep_json
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='127.0.0.1', port=PORT, debug=True)
 
 

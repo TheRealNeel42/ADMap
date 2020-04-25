@@ -75,6 +75,16 @@ createCard("Users", "http://127.0.0.1:5000/users", (jsonObject) =>
     return "received: " + JSON.stringify(jsonObject);
 });
 
+createCard("UserSPNs", "http://127.0.0.1:5000/userspns", (jsonObject) =>
+{
+    return "received: " + JSON.stringify(jsonObject);
+});
+
+createCard("As-Rep Roasting", "http://127.0.0.1:5000/asrep", (jsonObject) =>
+{
+    return "received: " + JSON.stringify(jsonObject);
+});
+
 
 
 
