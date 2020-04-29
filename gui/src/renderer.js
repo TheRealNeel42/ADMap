@@ -49,8 +49,10 @@ function createCard(title, apiUrl, populationFn)
 function submit()
 {
     const args = "?dcip=" + document.getElementById("ipAddress").value
-        + "&password=" + document.getElementById("password").value
-        + "&username=" + document.getElementById("username").value;
+        + "&domain=" + document.getElementById("domain").value
+        + "&username=" + document.getElementById("username").value
+        + "&password=" + document.getElementById("password").value;
+        
 
     // http://127.0.0.1:5000/users?username=hey&password=fdsa&dcip=10.10.10.127&full=fjeiwo
     cardMaps.filter(item => item.card.isChecked).forEach((item) =>
@@ -86,16 +88,8 @@ createCard("As-Rep Roasting", "http://127.0.0.1:5000/asrep", (jsonObject) =>
     return jsonObject[0];
 });
 
-
-
-
-// this is what i used for screenshot //
-// cardContainer.appendChild(new Card("Users", "cn: Guest\n\ncn: AAD_987d7f2f57d2\n\ncn: Mike Hope\nuserPrincipalName: mhope@MEGABANK.LOCAL\n\ncn: SABatchJobs\nuserPrincipalName: SABatchJobs@MEGABANK.LOCAL\n\ncn: svc-ata\nuserPrincipalName: svc-ata@MEGABANK.LOCAL\n\ncn: svc-bexec\nuserPrincipalName: svc-bexec@MEGABANK.LOCAL\n\ncn: svc-netapp\nuserPrincipalName: svc-netapp@MEGABANK.LOCAL\n\ncn: Dimitris Galanos\nuserPrincipalName: dgalanos@MEGABANK.LOCAL\n\ncn: Ray O'Leary\nuserPrincipalName: roleary@MEGABANK.LOCAL\n\ncn: Sally Morgan\nuserPrincipalName: smorgan@MEGABANK.LOCAL").container);
-// cardContainer.appendChild(new Card("Domain", "<domain info>").container);
-// cardContainer.appendChild(new Card("AS-REP", "Name          MemberOf                                                PasswordLastSet             LastLogon                   UAC\n------------  ------------------------------------------------------  --------------------------  --------------------------  --------\nsvc-alfresco  CN=Service Accounts,OU=Security Groups,DC=htb,DC=local  2020-03-27 04:56:30.543947  2020-03-27 04:55:33.028239  0x410200").container);
-// cardContainer.appendChild(new Card("User SPNs", "None.").container);
-// cardContainer.appendChild(new Card("User SPNs", "None.").container);
-// cardContainer.appendChild(new Card("User SPNs", "None.").container);
-// cardContainer.appendChild(new Card("User SPNs", "None.").container);
-// cardContainer.appendChild(new Card("User SPNs", "None.").container);
+createCard("Kerberoast", "http://127.0.0.1:5000/kerberoast", (jsonObject) =>
+{
+    return jsonObject[0];
+});
 
