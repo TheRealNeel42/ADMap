@@ -78,6 +78,11 @@ createCard("Users", "http://127.0.0.1:5000/users", (jsonObject) =>
     //return JSON.stringify(jsonObject);
 });
 
+createCard("Groups", "http://127.0.0.1:5000/groups", (jsonObject) => 
+{
+    return jsonObject[0];
+})
+
 createCard("UserSPNs", "http://127.0.0.1:5000/userspns", (jsonObject) =>
 {
     return jsonObject[0];

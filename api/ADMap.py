@@ -61,10 +61,48 @@ def users():
 		return bad_dc_json
 
 	if username and password:
-		p = Popen([WINDAPSEARCH, '-u', username, '-p', password, '--dc-ip', dcip, '-U', '--full' ], stdin=PIPE, stdout=PIPE, stderr=PIPE) 
+		p = Popen([WINDAPSEARCH, '-u', username, '-p', password, '--dc-ip', dcip, '-U', '--attrs', 'cn,name,sAMAccountName,userPrincipalName,description,distinguishedName' ], stdin=PIPE, stdout=PIPE, stderr=PIPE) 
 		output, err = p.communicate(b"input data that is passed to subprocess' stdin")
 	else:
-		p = Popen([WINDAPSEARCH, '--dc-ip', dcip, '-U', '--full'], stdin=PIPE, stdout=PIPE, stderr=PIPE) 
+		p = Popen([WINDAPSEARCH, '--dc-ip', dcip, '-U', '--attrs', 'cn,name,sAMAccountName,userPrincipalName,description,distinguishedName'], stdin=PIPE, stdout=PIPE, stderr=PIPE) 
+		output, err = p.communicate(b"input data that is passed to subprocess' stdin")		
+	_output = []
+	_output.append(output)
+	users_json = json.dumps(_output)
+	return users_json
+
+@app.route('/groups')
+def groups():
+	dcip = request.args.get('dcip')
+
+	if request.args.get('username'):
+		username = request.args.get('username')
+	else:
+		username = ""
+
+	if request.args.get('password'):
+		password = request.args.get('password')
+	else:
+		password = ""
+
+	#first check that ip was given
+	if not dcip:
+		no_dcip = []  
+		no_dcip.append("No domain controller IP address given")
+		no_dc_json = json.dumps(no_dcip)
+		return no_dc_json
+	#now check it is a valid IP
+	if not check_ip(dcip):
+		bad_dcip = []  
+		bad_dcip.append("Invalid IP format")
+		bad_dc_json = json.dumps(bad_dcip)
+		return bad_dc_json
+
+	if username and password:
+		p = Popen([WINDAPSEARCH, '-u', username, '-p', password, '--dc-ip', dcip, '-G'], stdin=PIPE, stdout=PIPE, stderr=PIPE) 
+		output, err = p.communicate(b"input data that is passed to subprocess' stdin")
+	else:
+		p = Popen([WINDAPSEARCH, '--dc-ip', dcip, '-G'], stdin=PIPE, stdout=PIPE, stderr=PIPE) 
 		output, err = p.communicate(b"input data that is passed to subprocess' stdin")		
 	_output = []
 	_output.append(output)
