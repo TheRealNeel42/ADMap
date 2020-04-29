@@ -16,3 +16,7 @@ Update config.json to point to the 2 locations. An example is given.
 
 ## Usage
 In the main directory run run.sh to start ADMap!
+
+## Future Work
+In the future, I plan on adding a group membership enumeration function to show all users in a specific group.
+I also plan on making an Appimage of this tool so it can be more easily downloaded, as downloading the requirments for Impacket can be a pain
