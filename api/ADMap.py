@@ -115,6 +115,8 @@ def userspns():
 def asrep():
 	dcip = request.args.get('dcip')
 	domain = request.args.get('domain')
+	username = request.args.get('username')
+	password = request.args.get('password')
 
 	#first check that ip was given
 	if not dcip:
@@ -136,8 +138,8 @@ def asrep():
 		no_domain_json = json.dumps(no_domain)
 		return no_domain_json
 
-	domain = domain + '/'
-	p = Popen([GETNPUSERS, domain, '-dc-ip', dcip], stdin=PIPE, stdout=PIPE, stderr=PIPE) 
+	target = domain + '/' + username + ":" + password
+	p = Popen([GETNPUSERS, target, '-dc-ip', dcip], stdin=PIPE, stdout=PIPE, stderr=PIPE) 
 	output, err = p.communicate(b"input data that is passed to subprocess' stdin") 	
 	_output = []
 	_output.append(output)
